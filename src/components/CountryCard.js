@@ -59,12 +59,18 @@ function CountryCard({
   };
 
   return (
-    <Grid item={true} md={3} lg={2}>
+    <Grid
+      item={true}
+      sx={{
+        maxHeight: "330px",
+        width: "17.5vw",
+        height: "30vw",
+      }}
+    >
       <Card
         sx={{
-          maxWidth: "260px",
           maxHeight: "330px",
-          width: "18.5vw",
+          width: "100%",
           height: "30vw",
           color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
           backgroundColor: `${
@@ -83,12 +89,16 @@ function CountryCard({
             maxHeight: "160px",
             width: "100%",
             height: "47%",
-            objectFit: "cover",
           }}
         >
           <CardMedia
             component={"img"}
-            sx={{ height: "100%", width: "100%" }}
+            sx={{
+              width: "100%",
+              height: "100%",
+              boxShadow: "0px 2px 1px 1px rgb(0 0 0 / 5%)",
+              objectFit: "cover",
+            }}
             image={flagImage}
             title={cName}
           />
@@ -123,6 +133,7 @@ function CountryCard({
               component={"p"}
               fontWeight={"300"}
               fontSize={"0.875rem"}
+              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
             >
               {`: ${population}`}
             </Typography>
@@ -140,6 +151,7 @@ function CountryCard({
               component={"p"}
               fontWeight={"300"}
               fontSize={"0.875rem"}
+              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
             >
               {`: ${region}`}
             </Typography>
@@ -157,6 +169,7 @@ function CountryCard({
               component={"p"}
               fontWeight={"300"}
               fontSize={"0.875rem"}
+              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
             >
               {`: ${capital}`}
             </Typography>

@@ -3,11 +3,15 @@ import { Box } from "@mui/system";
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { day_nightState, setReduxDayNight } from "../features/day_night_Slice";
+import { BsMoon, BsMoonFill } from "react-icons/bs";
 
 function NavBar() {
+  // dispatch
   const dispatch = useDispatch();
+  // redux day-night selector
   const day_nightSelector = useSelector(day_nightState);
 
+  // switch between dark and light based on redux select 
   const day_nightReduxSwitcher = useCallback(() => {
     if (day_nightSelector) {
       return { ReduxDay_night: false };
@@ -19,62 +23,82 @@ function NavBar() {
   const day_night_switch = () => {
     dispatch(setReduxDayNight(day_nightReduxSwitcher()));
   };
-  console.log(day_nightSelector.ReduxDay_night);
+
+  // colors variables
+  const mainBack = `${
+    day_nightSelector ? "hsl(0, 0%, 98%)" : "hsl(209, 23%, 22%)"
+  }
+  `;
+  const mainColor = `
+  ${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}
+ `;
 
   return (
-    <Box
-      component={"div"}
-      sx={{
-        backgroundColor: `${
-          day_nightSelector ? "white" : "hsl(209, 23%, 22%)"
-        }`,
-        color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
-        width: "100%",
-        maxWidth: "100%",
-        height: "80px",
-        display: "flex",
-      }}
-      xs={{
-        maxWidth: "1441px",
-      }}
-    >
-      <Grid
-        container
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        width={"100%"}
-        height={"100%"}
-        padding={"0 80px"}
+    <nav>
+      <Box
+        component={"div"}
+        sx={{
+          backgroundColor: `${mainBack}`,
+          color: `${mainColor}`,
+          width: "100%",
+          maxWidth: "100%",
+          height: "6vw",
+          display: "flex",
+        }}
+        xs={{
+          maxWidth: "100%",
+        }}
       >
-        <Grid>
-          <Typography
-            component={"h1"}
-            fontWeight={"800"}
-            sx={{
-              color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
-            }}
-          >
-            Where in the world ?
-          </Typography>
+        <Grid
+          container
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          width={"100%"}
+          height={"100%"}
+          padding={"0 80px"}
+          boxShadow={
+            day_nightSelector
+              ? "0px 0px 7px 1px hsl(209deg 23% 92%)"
+              : "0px 0px 1px 2px hsl(209deg 23% 23%)"
+          }
+        >
+          <Grid>
+            <Typography
+              component={"h1"}
+              fontWeight={"800"}
+              fontSize={"1.3vw"}
+              sx={{
+                color: `${mainColor}`,
+              }}
+            >
+              Where in the world ?
+            </Typography>
+          </Grid>
+          <Grid>
+            <Button
+              startIcon={
+                day_nightSelector ? (
+                  <BsMoon fontSize={"1vw"} />
+                ) : (
+                  <BsMoonFill fontSize={"1vw"} />
+                )
+              }
+              onClick={() => {
+                day_night_switch();
+              }}
+              sx={{
+                color: `${mainColor}`,
+                backgroundColor: `${mainBack}`,
+                fontWeight: "600",
+                fontSize: "1vw",
+              }}
+            >
+              Dark Mode
+            </Button>
+          </Grid>
         </Grid>
-        <Grid>
-          <Button
-            onClick={() => {
-              day_night_switch();
-            }}
-            sx={{
-              color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
-              backgroundColor: `${
-                day_nightSelector ? "white" : "hsl(209, 23%, 22%)"
-              }`,
-              fontWeight: "600",
-            }}
-          >
-            Dark Mode
-          </Button>
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </nav>
   );
 }
 

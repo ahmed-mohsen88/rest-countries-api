@@ -1,4 +1,16 @@
-.MuiTypography {
-  font-weight: 600;
+* {
+  font-size: 16px;
 }
 
+.serachInput::before {
+  visibility: hidden;
+}
+
+.MuiInput-root::after {
+  border: none;
+  visibility: hidden;
+}
+
+.-MuiInputLabel-root {
+  border: none;
+}
