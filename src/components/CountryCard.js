@@ -116,7 +116,7 @@ function CountryCard({
         >
           <Typography
             gutterBottom
-            variant="h5"
+            variant="h6"
             component="h6"
             fontWeight={"800"}
             fontSize={"1.3rem"}

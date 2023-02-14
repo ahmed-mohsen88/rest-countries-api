@@ -125,7 +125,7 @@ function Home({ countries }) {
                   padding: "10px",
                   color: "hsl(0, 0%, 52%)",
                 },
-                background: `${elementBackGround}`,
+                // background: `${elementBackGround}`,
                 paddingLeft: "1.5em",
                 border: "none",
                 width: `${matches ? "100%" : "35vw"}`,
