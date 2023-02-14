@@ -62,126 +62,128 @@ function CountryCard({
   const matches = useMediaQuery("(max-width:376px)");
 
   return (
-    <Grid
-      item={true}
-      sx={{
-        maxHeight: "350px",
-        // height: `${matches ? "50vh" : "30vw"}`,
-
-        width: `${matches ? "100%" : "17.5vw"}`,
-        height: `${matches ? "45vh" : "30vw"}`,
-      }}
-    >
-      <Card
+    <main>
+      <Grid
+        item={true}
         sx={{
           maxHeight: "350px",
-          width: "100%",
-          height: `${matches ? "50vh" : "25vw"}`,
-          color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
-          backgroundColor: `${
-            day_nightSelector ? "white" : "hsl(209, 23%, 22%)"
-          }`,
-        }}
-        onClick={() => {
-          handelClick();
-        }}
-        onMouseOver={(e) => {
-          e.target.style.cursor = "pointer";
+          // height: `${matches ? "50vh" : "30vw"}`,
+
+          width: `${matches ? "100%" : "17.5vw"}`,
+          height: `${matches ? "45vh" : "30vw"}`,
         }}
       >
-        <Grid
+        <Card
           sx={{
-            maxHeight: `${matches ? "250px" : "160px"}`,
+            maxHeight: "350px",
             width: "100%",
-            height: "47%",
+            height: `${matches ? "50vh" : "25vw"}`,
+            color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
+            backgroundColor: `${
+              day_nightSelector ? "white" : "hsl(209, 23%, 22%)"
+            }`,
+          }}
+          onClick={() => {
+            handelClick();
+          }}
+          onMouseOver={(e) => {
+            e.target.style.cursor = "pointer";
           }}
         >
-          <CardMedia
-            component={"img"}
+          <Grid
             sx={{
+              maxHeight: `${matches ? "250px" : "160px"}`,
               width: "100%",
-              height: "100%",
-              boxShadow: "0px 2px 1px 1px rgb(0 0 0 / 5%)",
-              objectFit: "cover",
+              height: "47%",
             }}
-            image={flagImage}
-            title={cName}
-          />
-        </Grid>
-        <CardContent
-          sx={{
-            color: "white",
-            marginTop: "1em",
-          }}
-        >
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="h5"
-            fontWeight={"800"}
-            fontSize={"1.3rem"}
-            color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
-            width={"100%"}
           >
-            {cName}
-          </Typography>
-          <Grid container marginTop={"1em"} alignItems={"center"}>
-            <Typography
-              variant="body2"
-              fontWeight={"600"}
-              fontSize={"0.875rem"}
-              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
-            >
-              Population
-            </Typography>
-            <Typography
-              component={"p"}
-              fontWeight={"300"}
-              fontSize={"0.875rem"}
-              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
-            >
-              {`: ${population}`}
-            </Typography>
+            <CardMedia
+              component={"img"}
+              sx={{
+                width: "100%",
+                height: "100%",
+                boxShadow: "0px 2px 1px 1px rgb(0 0 0 / 5%)",
+                objectFit: "cover",
+              }}
+              image={flagImage}
+              title={cName}
+            />
           </Grid>
-          <Grid container marginTop={"5px"} alignItems={"center"}>
+          <CardContent
+            sx={{
+              color: "white",
+              marginTop: "1em",
+            }}
+          >
             <Typography
-              variant="body2"
-              fontWeight={"600"}
-              fontSize={"0.875rem"}
+              gutterBottom
+              variant="h5"
+              component="h5"
+              fontWeight={"800"}
+              fontSize={"1.3rem"}
               color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
+              width={"100%"}
             >
-              Region
+              {cName}
             </Typography>
-            <Typography
-              component={"p"}
-              fontWeight={"300"}
-              fontSize={"0.875rem"}
-              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
-            >
-              {`: ${region}`}
-            </Typography>
-          </Grid>
-          <Grid container marginTop={"5px"} alignItems={"center"}>
-            <Typography
-              variant="body2"
-              fontWeight={"600"}
-              fontSize={"0.875rem"}
-              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
-            >
-              Capital
-            </Typography>
-            <Typography
-              component={"p"}
-              fontWeight={"300"}
-              fontSize={"0.875rem"}
-              color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
-            >
-              {`: ${capital}`}
-            </Typography>
-          </Grid>
-        </CardContent>
-      </Card>
-    </Grid>
+            <Grid container marginTop={"1em"} alignItems={"center"}>
+              <Typography
+                variant="body2"
+                fontWeight={"600"}
+                fontSize={"0.875rem"}
+                color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
+              >
+                Population
+              </Typography>
+              <Typography
+                component={"p"}
+                fontWeight={"300"}
+                fontSize={"0.875rem"}
+                color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
+              >
+                {`: ${population}`}
+              </Typography>
+            </Grid>
+            <Grid container marginTop={"5px"} alignItems={"center"}>
+              <Typography
+                variant="body2"
+                fontWeight={"600"}
+                fontSize={"0.875rem"}
+                color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
+              >
+                Region
+              </Typography>
+              <Typography
+                component={"p"}
+                fontWeight={"300"}
+                fontSize={"0.875rem"}
+                color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
+              >
+                {`: ${region}`}
+              </Typography>
+            </Grid>
+            <Grid container marginTop={"5px"} alignItems={"center"}>
+              <Typography
+                variant="body2"
+                fontWeight={"600"}
+                fontSize={"0.875rem"}
+                color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
+              >
+                Capital
+              </Typography>
+              <Typography
+                component={"p"}
+                fontWeight={"300"}
+                fontSize={"0.875rem"}
+                color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
+              >
+                {`: ${capital}`}
+              </Typography>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+    </main>
   );
 }
 
