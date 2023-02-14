@@ -43,7 +43,7 @@ function Details({ countries }) {
   }, [reduxCountry, dispatch, converter]);
 
   // use mediaquery
-  const matches = useMediaQuery("(max-width:376px)");
+  const matches = useMediaQuery("(max-width:450px)");
 
   // main color variable
   const paragraphColor = `${

@@ -69,7 +69,7 @@ function Home({ countries }) {
     day_nightSelector ? "white" : "hsl(209, 23%, 22%)"
   }`;
 
-  const matches = useMediaQuery("(max-width:376px)");
+  const matches = useMediaQuery("(max-width:450px)");
 
   return (
     <main>

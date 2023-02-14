@@ -33,7 +33,7 @@ function NavBar() {
   const mainColor = `
   ${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}
  `;
-  const matches = useMediaQuery("(max-width:376px)");
+  const matches = useMediaQuery("(max-width:450px)");
 
   return (
     <nav>

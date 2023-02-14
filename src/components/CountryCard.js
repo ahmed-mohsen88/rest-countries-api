@@ -59,7 +59,7 @@ function CountryCard({
     navigate("/details");
   };
 
-  const matches = useMediaQuery("(max-width:376px)");
+  const matches = useMediaQuery("(max-width:450px)");
 
   return (
     <main>
