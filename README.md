@@ -86,6 +86,5 @@ redux toolkit
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
 - Frontend Mentor - [@ahmed-mohsen88](https://www.frontendmentor.io/profile/ahmed-mohsen88)
 - LinkedIn - [@ahmed-mohsen-a4aa33249](https://www.linkedin.com/in/ahmed-mohsen-a4aa33249/)
