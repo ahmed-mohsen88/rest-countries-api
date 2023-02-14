@@ -47,9 +47,6 @@ function NavBar() {
           height: `${matches ? "7vh" : "6vw"}`,
           display: "flex",
         }}
-        xs={{
-          maxWidth: "100%",
-        }}
       >
         <Grid
           container

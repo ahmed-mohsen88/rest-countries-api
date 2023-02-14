@@ -28,7 +28,7 @@ function Home({ countries }) {
 
   // set state equal to countries prop if not filtered by region
   useEffect(() => {
-    const label = document.getElementById("demo-simple-select-label");
+    const label = document.getElementById("demo");
     if (selected) {
       label.style.display = "none";
       const newCountries = countries.filter((country) => {
@@ -118,7 +118,7 @@ function Home({ countries }) {
               }
               inputProps={{
                 background: `${elementBackGround}`,
-                color: `${mainColor}`,
+                // color: `${mainColor}`,
               }}
               sx={{
                 "& input::placeholder": {
@@ -155,7 +155,6 @@ function Home({ countries }) {
             >
               <InputLabel
                 key={"label"}
-                id="demo-simple-select-label"
                 style={{
                   width: "100%",
                   color: "hsl(0, 0%, 52%)",
@@ -177,7 +176,7 @@ function Home({ countries }) {
                     },
                   },
                 }}
-                id="demo-simple-select-label"
+                id="demo"
                 value={selected}
                 onChange={(e) => handelSelect(e)}
                 sx={{

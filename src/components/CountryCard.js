@@ -117,7 +117,7 @@ function CountryCard({
           <Typography
             gutterBottom
             variant="h5"
-            component="h5"
+            component="h6"
             fontWeight={"800"}
             fontSize={"1.3rem"}
             color={`${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`}
