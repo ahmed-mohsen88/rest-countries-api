@@ -14,6 +14,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import CountryCard from "./components/CountryCard";
 import { day_nightState } from "./features/day_night_Slice";
 import "./assets/reduxDetails.css";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function Home({ countries }) {
   // countries state
@@ -68,19 +69,20 @@ function Home({ countries }) {
     day_nightSelector ? "white" : "hsl(209, 23%, 22%)"
   }`;
 
+  const matches = useMediaQuery("(max-width:376px)");
+
   return (
     <main>
       <Container
         maxWidth={"100%"}
         style={{
           display: "flex",
-          paddingTop: "50px",
-          paddingLeft: "80px",
-          paddingRight: "80px",
+          padding: `${matches ? "20px" : "50px 80px"}`,
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: `${matches ? "flex-start" : "center"}`,
           alignItems: "center",
           background: `${mainBackGroundColor}`,
+          minHeight: "100vh",
         }}
       >
         {/* search input */}
@@ -97,10 +99,13 @@ function Home({ countries }) {
           <Grid
             sx={{
               backgroundColor: `${mainBackGroundColor}`,
+              width: `${matches ? "100%" : "unset"}`,
             }}
           >
             {/* search input */}
             <Input
+              placeholder="Search for country..."
+              className="serachInput"
               // icon
               startAdornment={
                 <InputAdornment position="start">
@@ -112,25 +117,21 @@ function Home({ countries }) {
                   />
                 </InputAdornment>
               }
-              className="serachInput"
-              name="search"
-              id="search"
-              placeholder="Search for country..."
               inputProps={{
-                background: `${ elementBackGround }`,
-                color: `${mainColor }`,
+                background: `${elementBackGround}`,
+                color: `${mainColor}`,
               }}
               sx={{
                 "& input::placeholder": {
                   padding: "10px",
                   color: "hsl(0, 0%, 52%)",
                 },
-                background: `${ elementBackGround }`,
+                background: `${elementBackGround}`,
                 paddingLeft: "1.5em",
                 border: "none",
-                width: "35vw",
+                width: `${matches ? "100%" : "35vw"}`,
                 height: "50px",
-                color: `${mainColor }`,
+                color: `${mainColor}`,
               }}
               onChange={(e) => {
                 handelSearch(e);
@@ -143,13 +144,14 @@ function Home({ countries }) {
               width: "200px",
               height: "50px",
               background: `${mainBackGroundColor}`,
+              marginTop: `${matches ? "30px" : "auto"}`,
             }}
           >
             <FormControl
               style={{
                 width: "100%",
                 height: "100%",
-                color: `${mainColor }`,
+                color: `${mainColor}`,
               }}
             >
               <InputLabel
@@ -170,8 +172,8 @@ function Home({ countries }) {
                   MenuProps: {
                     MenuListProps: {
                       sx: {
-                        background: `${ elementBackGround }`,
-                        color: `${mainColor }`,
+                        background: `${elementBackGround}`,
+                        color: `${mainColor}`,
                       },
                     },
                   },
@@ -183,15 +185,15 @@ function Home({ countries }) {
                   border: "none",
                   width: "100%",
                   height: "100%",
-                  background: `${ elementBackGround }`,
-                  color: `${mainColor }`,
+                  background: `${elementBackGround}`,
+                  color: `${mainColor}`,
                 }}
               >
                 <MenuItem
                   value="Africa"
                   style={{
-                    background: `${ elementBackGround }`,
-                    color: `${mainColor }`,
+                    background: `${elementBackGround}`,
+                    color: `${mainColor}`,
                   }}
                 >
                   Africa
@@ -199,8 +201,8 @@ function Home({ countries }) {
                 <MenuItem
                   value="America"
                   style={{
-                    backgroundColor: `${ elementBackGround }`,
-                    color: `${mainColor }`,
+                    backgroundColor: `${elementBackGround}`,
+                    color: `${mainColor}`,
                   }}
                 >
                   America
@@ -208,8 +210,8 @@ function Home({ countries }) {
                 <MenuItem
                   value="Asia"
                   style={{
-                    backgroundColor: `${ elementBackGround }`,
-                    color: `${mainColor }`,
+                    backgroundColor: `${elementBackGround}`,
+                    color: `${mainColor}`,
                   }}
                 >
                   Asia
@@ -217,8 +219,8 @@ function Home({ countries }) {
                 <MenuItem
                   value="Europe"
                   style={{
-                    backgroundColor: `${ elementBackGround }`,
-                    color: `${mainColor }`,
+                    backgroundColor: `${elementBackGround}`,
+                    color: `${mainColor}`,
                   }}
                 >
                   Europe
@@ -226,8 +228,8 @@ function Home({ countries }) {
                 <MenuItem
                   value="Oceania"
                   style={{
-                    backgroundColor: `${ elementBackGround }`,
-                    color: `${mainColor }`,
+                    backgroundColor: `${elementBackGround}`,
+                    color: `${mainColor}`,
                   }}
                 >
                   Oceania
@@ -240,7 +242,8 @@ function Home({ countries }) {
           container
           display={"flex"}
           gap={"80px"}
-          marginTop={"20px"}
+          padding={`${matches ? "15px" : "auto"}`}
+          marginTop={`${matches ? "10px" : "20px"}`}
           paddingBottom={"20px"}
           justifyContent={"space-between"}
           alignItems={"center"}

@@ -8,7 +8,6 @@ const day_night = createSlice({
   },
   reducers: {
     setReduxDayNight: (state, action) => {
-      console.log(action.payload);
       state.ReduxDay_night = action.payload.ReduxDay_night;
     },
   },

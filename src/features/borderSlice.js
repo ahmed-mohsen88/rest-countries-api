@@ -8,7 +8,6 @@ const borderSlice = createSlice({
   },
   reducers: {
     setReduxBorder: (state, action) => {
-      //   console.log(action.payload);
       state.border = action.payload;
     },
   },

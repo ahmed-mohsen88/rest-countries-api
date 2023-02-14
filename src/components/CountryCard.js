@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCountry } from "../features/slice";
 import { day_nightState } from "../features/day_night_Slice";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function CountryCard({
   flagImage,
@@ -58,20 +59,24 @@ function CountryCard({
     navigate("/details");
   };
 
+  const matches = useMediaQuery("(max-width:376px)");
+
   return (
     <Grid
       item={true}
       sx={{
-        maxHeight: "330px",
-        width: "17.5vw",
-        height: "30vw",
+        maxHeight: "350px",
+        // height: `${matches ? "50vh" : "30vw"}`,
+
+        width: `${matches ? "100%" : "17.5vw"}`,
+        height: `${matches ? "45vh" : "30vw"}`,
       }}
     >
       <Card
         sx={{
-          maxHeight: "330px",
+          maxHeight: "350px",
           width: "100%",
-          height: "30vw",
+          height: `${matches ? "50vh" : "25vw"}`,
           color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
           backgroundColor: `${
             day_nightSelector ? "white" : "hsl(209, 23%, 22%)"
@@ -86,7 +91,7 @@ function CountryCard({
       >
         <Grid
           sx={{
-            maxHeight: "160px",
+            maxHeight: `${matches ? "250px" : "160px"}`,
             width: "100%",
             height: "47%",
           }}

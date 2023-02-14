@@ -8,6 +8,7 @@ import { day_nightState } from "../features/day_night_Slice";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function Details({ countries }) {
   // country state
@@ -41,6 +42,9 @@ function Details({ countries }) {
     dispatch(setReduxBorder(converter()));
   }, [reduxCountry, dispatch, converter]);
 
+  // use mediaquery
+  const matches = useMediaQuery("(max-width:376px)");
+
   // main color variable
   const paragraphColor = `${
     day_nightSelector ? "hsl(200, 15%, 8%)" : "hsl(0, 0%, 100%)"
@@ -60,19 +64,31 @@ function Details({ countries }) {
         component={"div"}
         sx={{
           maxWidth: "100%",
-          paddingTop: "4vw",
-          height: "100%",
+          padding: `${matches ? "20px" : "auto"}`,
+          paddingTop: `${matches ? "6vh" : "4vw"}`,
+          minHeight: `${matches ? "105vh" : "100vh"}`,
           backgroundColor: `${mainBackGroundColor}`,
           color: `${mainColor}`,
         }}
       >
         {/* top button */}
-        <Grid container sx={{ paddingLeft: "80px" }}>
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+        <Grid container sx={{ paddingLeft: `${matches ? "auto" : "80px"}` }}>
+          <Link
+            to={"/"}
+            style={{
+              textDecoration: "none",
+              boxShadow: `${
+                day_nightSelector
+                  ? "0px 0px 5px 0px hsl(200deg 15% 51%)"
+                  : "rgb(17 21 23) 0px 0px 5px 0px"
+              }`,
+            }}
+          >
             <Button
               startIcon={<BsArrowLeft />}
               style={{
-                width: "9.722vmax",
+                width: `${matches ? "120px" : "9.722vmax"}`,
+                fontSize: `${matches ? ".9rem" : "auto"}`,
                 maxWidth: "140px",
                 maxHeight: "40px",
                 color: `${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}`,
@@ -90,21 +106,25 @@ function Details({ countries }) {
         <Grid // container
           container
           justifyContent={"flex-start"}
-          gap={"9.722vw"}
-          marginTop={"8.61vh"}
+          gap={`${matches ? "auto" : "9.722vw"}`}
+          marginTop={`${matches ? "7.5vh" : "8.61vh"}`}
           height={"100%"}
+          width={`${matches ? "100%" : "auto"}`}
           style={{
             color: `${mainColor}`,
             backgroundColor: `${mainBackGroundColor}`,
           }}
-          sx={{ paddingLeft: "80px", paddingBottom: "80px" }}
+          sx={{
+            paddingLeft: `${matches ? "auto%" : "80px"}`,
+            paddingBottom: `${matches ? "auto" : "80px"}`,
+          }}
         >
           <Grid
             sx={{
-              width: "38%",
-              height: "60vh",
+              width: `${matches ? "100%" : "38%"}`,
+              height: `${matches ? "auto" : "60vh"}`,
               maxWidth: "560px",
-              maxHeight: "400px",
+              maxHeight: `${matches ? "100%" : "400px"}`,
               color: `${mainColor}`,
               backgroundColor: `${mainBackGroundColor}`,
             }}
@@ -120,16 +140,16 @@ function Details({ countries }) {
           </Grid>
           {/* right section */}
           <Stack
-            width={"50%"}
+            width={`${matches ? "100%" : "50%"}`}
             height={"36vh"}
             justifyContent={"flex-start"}
             alignItems={"flex-start"}
           >
             {/* name */}
-            <Grid marginTop={"5.5vh"}>
+            <Grid marginTop={"5vh"}>
               <Typography
                 fontWeight={"800"}
-                fontSize={"2vw"}
+                fontSize={`${matches ? "1rem" : "2vw"}`}
                 sx={{
                   color: `${mainColor}`,
                 }}
@@ -142,62 +162,180 @@ function Details({ countries }) {
               container
               justifyContent={"flex-start"}
               gap={"8vw"}
-              marginTop={"4.5vh"}
+              marginTop={`${matches ? "2vh" : "4.5vh"}`}
             >
-              <Stack gap={"1.47vh"}>
+              <Stack gap={"1vh"} width={`${matches ? "100%" : "auto"}`}>
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Native Name
-                  </StyledParagraph>
-                  <StyledSpan>: {selectedCountry?.nativeName}</StyledSpan>
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Native Name
+                      </StyledParagraph375>
+                      <StyledSpan375>
+                        {" "}
+                        : {selectedCountry?.nativeName}
+                      </StyledSpan375>{" "}
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Native Name
+                      </StyledParagraph>
+                      <StyledSpan>: {selectedCountry?.nativeName}</StyledSpan>{" "}
+                    </>
+                  )}
                 </Box>
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Population{" "}
-                  </StyledParagraph>
-                  <StyledSpan>: {selectedCountry?.population}</StyledSpan>
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Population
+                      </StyledParagraph375>
+                      <StyledSpan375>
+                        : {selectedCountry?.population}
+                      </StyledSpan375>
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Population
+                      </StyledParagraph>
+                      <StyledSpan>: {selectedCountry?.population}</StyledSpan>
+                    </>
+                  )}
                 </Box>
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Region Name{" "}
-                  </StyledParagraph>
-                  <StyledSpan>: {selectedCountry?.region}</StyledSpan>
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Region Name
+                      </StyledParagraph375>
+                      <StyledSpan375>: {selectedCountry?.region}</StyledSpan375>
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Region Name{" "}
+                      </StyledParagraph>
+                      <StyledSpan>: {selectedCountry?.region}</StyledSpan>
+                    </>
+                  )}
                 </Box>
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Sub Region Name{" "}
-                  </StyledParagraph>
-                  <StyledSpan>: {selectedCountry?.subRegion}</StyledSpan>
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Sub Region Name
+                      </StyledParagraph375>
+                      <StyledSpan375>
+                        : {selectedCountry?.subRegion}
+                      </StyledSpan375>
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Sub Region Name
+                      </StyledParagraph>
+                      <StyledSpan>: {selectedCountry?.subRegion}</StyledSpan>
+                    </>
+                  )}
                 </Box>
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Capital{" "}
-                  </StyledParagraph>
-                  <StyledSpan>: {selectedCountry?.capital}</StyledSpan>
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Capital
+                      </StyledParagraph375>
+                      <StyledSpan375>
+                        : {selectedCountry?.capital}
+                      </StyledSpan375>
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Capital{" "}
+                      </StyledParagraph>
+                      <StyledSpan>: {selectedCountry?.capital}</StyledSpan>
+                    </>
+                  )}
                 </Box>
               </Stack>
-              <Stack gap={"1.47vh"}>
+              <Stack gap={`${matches ? "1vh" : "1.47vh"}`}>
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Top Level Development
-                  </StyledParagraph>
-                  <StyledSpan>: {selectedCountry?.toplevelDomain}</StyledSpan>
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Top Level Development
+                      </StyledParagraph375>
+                      <StyledSpan375>
+                        : {selectedCountry?.toplevelDomain}
+                      </StyledSpan375>
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Top Level Development
+                      </StyledParagraph>
+                      <StyledSpan>
+                        : {selectedCountry?.toplevelDomain}
+                      </StyledSpan>
+                    </>
+                  )}
                 </Box>
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Currencies{" "}
-                  </StyledParagraph>
-                  {selectedCountry?.currency?.map((el) => {
-                    return <StyledSpan key={el?.name}>: {el?.name}</StyledSpan>;
-                  })}
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Currencies
+                      </StyledParagraph375>
+                      {selectedCountry?.currency?.map((el) => {
+                        return (
+                          <StyledSpan375 key={el?.name}>
+                            : {el?.name}
+                          </StyledSpan375>
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Currencies{" "}
+                      </StyledParagraph>
+                      {selectedCountry?.currency?.map((el) => {
+                        return (
+                          <StyledSpan key={el?.name}>: {el?.name}</StyledSpan>
+                        );
+                      })}
+                    </>
+                  )}
                 </Box>
+
                 <Box component={"div"} display={"flex"}>
-                  <StyledParagraph style={{ color: paragraphColor }}>
-                    Languages{" "}
-                  </StyledParagraph>
-                  {selectedCountry?.languages?.map((el) => {
-                    return <StyledSpan key={el?.name}>: {el?.name}</StyledSpan>;
-                  })}
+                  {matches ? (
+                    <>
+                      <StyledParagraph375 style={{ color: paragraphColor }}>
+                        Languages
+                      </StyledParagraph375>
+                      {selectedCountry?.languages?.map((el) => {
+                        return (
+                          <StyledSpan375 key={el?.name}>
+                            : {el?.name}
+                          </StyledSpan375>
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <>
+                      <StyledParagraph style={{ color: paragraphColor }}>
+                        Languages{" "}
+                      </StyledParagraph>
+                      {selectedCountry?.languages?.map((el) => {
+                        return (
+                          <StyledSpan key={el?.name}>: {el?.name}</StyledSpan>
+                        );
+                      })}
+                    </>
+                  )}
                 </Box>
               </Stack>
             </Grid>
@@ -206,22 +344,27 @@ function Details({ countries }) {
               container
               display={"flex"}
               alignItems={"center"}
-              marginTop={"2.9vw"}
+              marginTop={`${matches ? "2vh" : "5vw"}`}
+              height={`${matches ? "100%" : "auto"}`}
             >
-              <StyledParagraph style={{ color: paragraphColor }}>
-                Border:{" "}
+              <StyledParagraph
+                style={{
+                  color: paragraphColor,
+                  fontSize: `${matches ? ".7rem" : "auto"}`,
+                  fontWeight: `${matches ? "600" : "auto"}`,
+                  width: `${matches ? "100%" : "auto"}`,
+                  paddingBottom: `${matches ? "1vh" : "auto"}`,
+                }}
+              >
+                Border Countries:
               </StyledParagraph>
               {border?.border != "" ? (
                 border?.border?.map((el) => {
                   return (
                     <Typography
-                      fontSize={"1vw"}
+                      fontSize={`${matches ? ".7rem" : "1vw"}`}
                       fontWeight={"300"}
-                      color={`${
-                        day_nightSelector
-                          ? "hsl(200, 15%, 8%)"
-                          : "hsl(0, 0%, 100%)"
-                      }`}
+                      color={`${paragraphColor}`}
                       backgroundColor={`${
                         day_nightSelector
                           ? "hsl(0, 0%, 100%)"
@@ -229,10 +372,11 @@ function Details({ countries }) {
                       }`}
                       marginRight={"5px"}
                       marginLeft={"5px"}
-                      padding={"5px"}
+                      marginBottom={"5px"}
+                      padding="7px"
                       boxShadow={`${
                         day_nightSelector
-                          ? "0px 0px 1px 0px hsl(209, 23%, 22%)"
+                          ? "0px 0px 2px 0px hsl(200deg 15% 51%)"
                           : "0px 0px 2px 0px hsl(200, 15%, 8%)"
                       }`}
                       key={el}
@@ -243,9 +387,8 @@ function Details({ countries }) {
                 })
               ) : (
                 <Typography
-                  color={`${
-                    day_nightSelector ? "hsl(200, 15%, 8%)" : "hsl(0, 0%, 100%)"
-                  }`}
+                  color={`${paragraphColor}`}
+                  fontSize={`${matches ? ".7rem" : "1vw"}`}
                   backgroundColor={`${
                     day_nightSelector
                       ? "hsl(0, 0%, 100%)"
@@ -256,7 +399,7 @@ function Details({ countries }) {
                   padding={"5px"}
                   boxShadow={`${
                     day_nightSelector
-                      ? "0px 0px 1px 0px hsl(209, 23%, 22%)"
+                      ? "0px 0px 2px 0px hsl(200deg 15% 51%)"
                       : "0px 0px 2px 0px hsl(200, 15%, 8%)"
                   }`}
                 >
@@ -275,8 +418,16 @@ const StyledParagraph = styled.p({
   fontWeight: 600,
   fontSize: "1vw",
 });
+
+const StyledParagraph375 = styled.p({
+  fontWeight: 600,
+  fontSize: ".7rem",
+});
 const StyledSpan = styled.span({
   fontSize: "1vw",
 });
 
+const StyledSpan375 = styled.span({
+  fontSize: ".7rem",
+});
 export default Details;

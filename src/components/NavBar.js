@@ -4,6 +4,7 @@ import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { day_nightState, setReduxDayNight } from "../features/day_night_Slice";
 import { BsMoon, BsMoonFill } from "react-icons/bs";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function NavBar() {
   // dispatch
@@ -11,7 +12,7 @@ function NavBar() {
   // redux day-night selector
   const day_nightSelector = useSelector(day_nightState);
 
-  // switch between dark and light based on redux select 
+  // switch between dark and light based on redux select
   const day_nightReduxSwitcher = useCallback(() => {
     if (day_nightSelector) {
       return { ReduxDay_night: false };
@@ -32,6 +33,7 @@ function NavBar() {
   const mainColor = `
   ${day_nightSelector ? "hsl(209, 23%, 22%)" : "white"}
  `;
+  const matches = useMediaQuery("(max-width:376px)");
 
   return (
     <nav>
@@ -42,7 +44,7 @@ function NavBar() {
           color: `${mainColor}`,
           width: "100%",
           maxWidth: "100%",
-          height: "6vw",
+          height: `${matches ? "7vh" : "6vw"}`,
           display: "flex",
         }}
         xs={{
@@ -55,7 +57,7 @@ function NavBar() {
           alignItems={"center"}
           width={"100%"}
           height={"100%"}
-          padding={"0 80px"}
+          padding={`${matches ? "0  20px" : "0 80px"}`}
           boxShadow={
             day_nightSelector
               ? "0px 0px 7px 1px hsl(209deg 23% 92%)"
@@ -66,7 +68,7 @@ function NavBar() {
             <Typography
               component={"h1"}
               fontWeight={"800"}
-              fontSize={"1.3vw"}
+              fontSize={`${matches ? ".9rem" : "1.3vw"}`}
               sx={{
                 color: `${mainColor}`,
               }}
@@ -78,9 +80,17 @@ function NavBar() {
             <Button
               startIcon={
                 day_nightSelector ? (
-                  <BsMoon fontSize={"1vw"} />
+                  <BsMoon
+                    style={{
+                      fontSize: `${matches ? ".7rem" : "1.3vw"}`,
+                    }}
+                  />
                 ) : (
-                  <BsMoonFill fontSize={"1vw"} />
+                  <BsMoonFill
+                    style={{
+                      fontSize: `${matches ? ".7rem" : "1.3vw"}`,
+                    }}
+                  />
                 )
               }
               onClick={() => {
@@ -89,8 +99,8 @@ function NavBar() {
               sx={{
                 color: `${mainColor}`,
                 backgroundColor: `${mainBack}`,
-                fontWeight: "600",
-                fontSize: "1vw",
+                fontWeight: "300",
+                fontSize: `${matches ? ".7rem" : "1.3vw"}`,
               }}
             >
               Dark Mode
