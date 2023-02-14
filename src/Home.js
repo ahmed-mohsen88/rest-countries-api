@@ -45,7 +45,7 @@ function Home({ countries }) {
   const handelSearch = (e) => {
     setInput(e.target.value);
     const newCountries = countries.filter((country) => {
-      return country.name.toLowerCase().includes(input);
+      return country.name.toLowerCase().match(input.toLowerCase());
     });
     setCountriesState(newCountries);
     setSelected("");
@@ -79,7 +79,6 @@ function Home({ countries }) {
           display: "flex",
           padding: `${matches ? "20px" : "50px 80px"}`,
           flexDirection: "column",
-          justifyContent: `${matches ? "flex-start" : "center"}`,
           alignItems: "center",
           background: `${mainBackGroundColor}`,
           minHeight: "100vh",
